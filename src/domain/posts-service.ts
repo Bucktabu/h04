@@ -24,7 +24,7 @@ export const postsService = {
                         sortDirection: string | undefined,
                         pageNumber: string | null | undefined,
                         pageSize: string | null | undefined)
-        : Promise<contentPageType> {
+                            : Promise<contentPageType> {
         const content = await postsRepository.givePosts(sortBy, sortDirection, pageNumber, pageSize)
 
         return paginationContentPage(sortBy, sortDirection, pageNumber, pageSize, content)

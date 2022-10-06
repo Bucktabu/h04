@@ -6,13 +6,13 @@ export const paginationContentPage = (sortBy: string | undefined,
                                       sortDirection: string | undefined,
                                       pageNumber: string | null | undefined, // номер страницы, которая будет возвращена
                                       pageSize: string | null | undefined,
-                                      items: blogsType | postsType) => {
+                                      content: blogsType | postsType) => {
     const pageWithContent = {
         "pagesCount": pagesCount(pageSize),
         "page": currentPage(pageNumber),
         "pageSize": contentOnThePage(pageSize),
         "totalCount": totalCount(),
-        "items": items
+        "items": content
     }
 
     return pageWithContent
