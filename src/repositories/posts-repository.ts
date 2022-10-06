@@ -9,7 +9,13 @@ export const postsRepository = {
         return newPost
     },
 
-    async givePosts(sortBy: string | undefined, sortDirection: string | undefined) {
+    async givePosts(blogId: string | undefined, sortBy: string | undefined, sortDirection: string | undefined) {
+
+        const filter: any = {}
+
+        if (blogId) {
+            filter.blogId = blogId
+        }
 
         if (!sortBy) {
             sortBy = 'createdAt'
@@ -20,7 +26,7 @@ export const postsRepository = {
         }
 
         return await postsCollection
-            .find({}, {projection: {_id: false}})
+            .find(filter, {projection: {_id: false}})
             .sort(sortBy, sortDirection === 'asc' ? 1 : -1)
             .toArray()
     },

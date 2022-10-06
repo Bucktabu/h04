@@ -71,10 +71,11 @@ blogsRouter.get('/:id/posts', async (req: Request, res: Response) => {
     }
 
     const pageWithPosts: contentPageType = await postsService
-        .givePostsPage(req.query.sortBy?.toString(),
-                       req.query.sortDirection?.toString(),
-                       req.query.pageNumber?.toString(),
-                       req.query.pageSize?.toString())
+        .givePostsPage(req.query.sortBy as string,
+                       req.query.sortDirection as string,
+                       req.query.pageNumber as string,
+                       req.query.pageSize as string,
+                        req.params.id as string)
 
     res.status(200).send(pageWithPosts)
 })

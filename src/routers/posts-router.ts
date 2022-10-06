@@ -23,7 +23,8 @@ postsRouter.post('/',
 
 postsRouter.get('/', async (req: Request, res: Response) => {
     const pageWithPosts: contentPageType = await postsService
-        .givePostsPage(req.query.sortBy?.toString(),
+        .givePostsPage(
+            req.query.sortBy?.toString(),
                       req.query.sortDirection?.toString(),
                       req.query.pageNumber?.toString(),
                       req.query.pageSize?.toString())
