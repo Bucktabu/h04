@@ -31,8 +31,8 @@ export const blogsRepository = {
         return await blogsCollection
             .find(filter, {projection: {_id: false}})
             .sort(sortBy, sortDirection === 'asc' ? 1 : -1)
-            .skip(giveSkipNumber(pageNumber, pageSize))
-            .limit(contentOnThePage(pageSize))
+            // .skip(giveSkipNumber(pageNumber, pageSize))
+            // .limit(contentOnThePage(pageSize))
             .toArray()
     },
 
