@@ -40,11 +40,11 @@ blogsRouter.post('/:id/posts',
 
 blogsRouter.get('/', async (req: Request, res: Response) => {
     const pageWithBlogs: contentPageType = await blogsService
-        .giveBlogsPage(req.query.name?.toString(),
-                       req.query.sortBy?.toString(),
+        .giveBlogsPage(req.query.sortBy?.toString(),
                        req.query.sortDirection?.toString(),
                        req.query.pageNumber?.toString(),
-                       req.query.pageSize?.toString()) // юрл это строка, почему нужно приводить к строке
+                       req.query.pageSize?.toString(),
+                       req.query.searchNameTerm?.toString()) // юрл это строка, почему нужно приводить к строке
 
     if (!pageWithBlogs) {
         return res.sendStatus(404)

@@ -8,15 +8,15 @@ export const blogsRepository = {
         return newBlog
     },
 
-    async giveBlogs(name: string | null | undefined,
-                    sortBy: string | undefined,
+    async giveBlogs(sortBy: string | undefined,
                     sortDirection: string | undefined,
                     pageNumber: string | null | undefined,
-                    pageSize: string | null | undefined): Promise<blogsType> {
+                    pageSize: string | null | undefined,
+                    searchNameTerm?: string): Promise<blogsType> {
 
         const filter: any = {}
 
-        if (name) {
+        if (searchNameTerm) {
             filter.name = {$regex: name, $options: 'i'}
         }
 

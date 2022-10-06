@@ -17,13 +17,13 @@ export const blogsService = {
         return newBlog
     },
 
-    async giveBlogsPage(name: string | null | undefined,
-                        sortBy: string | undefined,
+    async giveBlogsPage(sortBy: string | undefined,
                         sortDirection: string | undefined,
                         pageNumber: string | null | undefined, // номер страницы, которая будет возвращена
-                        pageSize: string | null | undefined) // количество элементов на странице
+                        pageSize: string | null | undefined,
+                        searchNameTerm?: string) // количество элементов на странице
                             : Promise<contentPageType> {
-        const content = await blogsRepository.giveBlogs(name, sortBy, sortDirection, pageNumber, pageSize)
+        const content = await blogsRepository.giveBlogs(sortBy, sortDirection, pageNumber, pageSize, searchNameTerm)
 
         return paginationContentPage(sortBy, sortDirection, pageNumber, pageSize, content)
     },
