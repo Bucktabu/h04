@@ -17,7 +17,7 @@ export const blogsRepository = {
         const filter: any = {}
 
         if (searchNameTerm) {
-            filter.name = {$regex: name, $options: 'i'}
+            filter.name = {$regex: searchNameTerm, $options: 'i'}
         }
 
         if (!sortBy) {

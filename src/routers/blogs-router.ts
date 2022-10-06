@@ -64,7 +64,7 @@ blogsRouter.get('/:id', async (req: Request, res: Response) => {
 })
 
 blogsRouter.get('/:id/posts', async (req: Request, res: Response) => {
-    const blog: blogType | null = await blogsService.giveBlogById(req.params.id) // повторение кода
+    const blog: blogType | null = await blogsService.giveBlogById(req.params.id)
 
     if (!blog) {
         return res.sendStatus(404)
