@@ -1,5 +1,6 @@
 import {blogsType} from "./types/blogs-type";
 import {postsType} from "./types/posts-type";
+import {postsRepository} from "./repositories/posts-repository";
 
 export const giveSkipNumber = (pageNumber: string | null | undefined,
                                pageSize: string | null | undefined) => {
@@ -14,8 +15,8 @@ export const giveSkipNumber = (pageNumber: string | null | undefined,
     return (Number(pageNumber) - 1) * Number(pageSize)
 }
 
-export const totalCount = (items: blogsType | postsType) => {
-    return items.length
+export const totalCount = () => {
+    return Number(postsRepository.giveTotalCount())
 }
 
 export const currentPage = (pageNumber: string | null | undefined) => {
@@ -35,6 +36,6 @@ export const contentOnThePage = (pageSize: string | null | undefined) => {
 } // validation default pageSize
 
 export const pagesCount = (pageSize: string | null | undefined, items: blogsType | postsType) => {
-    return Math.ceil(items.length / contentOnThePage(pageSize))
+    return Math.ceil(Number(postsRepository.giveTotalCount()) / contentOnThePage(pageSize))
 }
 

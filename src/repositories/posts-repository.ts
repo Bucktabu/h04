@@ -1,4 +1,4 @@
-import {postsCollection} from "./db";
+import {blogsCollection, postsCollection} from "./db";
 import {postsType, postType} from "../types/posts-type";
 import {contentOnThePage, giveSkipNumber} from "../helperFunctions";
 
@@ -30,6 +30,11 @@ export const postsRepository = {
             .skip(giveSkipNumber(pageNumber, pageSize))
             .limit(contentOnThePage(pageSize))
             .toArray()
+    },
+
+    async giveTotalCount(): Promise<number> {
+        const posts = await postsCollection.find({}).toArray()
+        return posts.length
     },
 
     async givePostById(id: string): Promise<postType | null> {

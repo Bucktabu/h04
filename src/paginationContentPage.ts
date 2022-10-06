@@ -11,7 +11,7 @@ export const paginationContentPage = (sortBy: string | undefined,
         "pagesCount": pagesCount(pageSize, items),
         "page": currentPage(pageNumber),
         "pageSize": contentOnThePage(pageSize),
-        "totalCount": totalCount(items),
+        "totalCount": totalCount(),
         "items": items
     }
 
