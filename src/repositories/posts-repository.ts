@@ -9,10 +9,7 @@ export const postsRepository = {
         return newPost
     },
 
-    async givePosts(sortBy: string | undefined,
-                    sortDirection: string | undefined,
-                    pageNumber: string | null | undefined,
-                    pageSize: string | null | undefined): Promise<postsType> {
+    async givePosts(sortBy: string | undefined, sortDirection: string | undefined) {
 
         const filter: any = {}
 
@@ -27,14 +24,7 @@ export const postsRepository = {
         return await postsCollection
             .find(filter, {projection: {_id: false}})
             .sort(sortBy, sortDirection === 'asc' ? 1 : -1)
-            .skip(giveSkipNumber(pageNumber, pageSize))
-            .limit(contentOnThePage(pageSize))
             .toArray()
-    },
-
-    async giveTotalCount(): Promise<number> {
-        const posts = await postsCollection.find({}).toArray()
-        return posts.length
     },
 
     async givePostById(id: string): Promise<postType | null> {
