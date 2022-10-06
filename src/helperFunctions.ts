@@ -35,7 +35,7 @@ export const contentOnThePage = (pageSize: string | null | undefined) => {
     return Number(pageSize)
 } // validation default pageSize
 
-export const pagesCount = (pageSize: string | null | undefined, items: blogsType | postsType) => {
+export const pagesCount = (pageSize: string | null | undefined) => {
     return Math.ceil(totalCount() / contentOnThePage(pageSize))
 }
 
