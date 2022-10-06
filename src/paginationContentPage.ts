@@ -8,14 +8,11 @@ export const paginationContentPage = (sortBy: string | undefined,
                                       pageSize: string | null | undefined,
                                       content: blogsType | postsType) => {
 
-    const tc = content.length
-    const pc = Math.ceil(tc / Number(pageSize))
-
     const pageWithContent = {
-        "pagesCount": pc,
+        "pagesCount": pagesCount(pageSize, content),
         "page": currentPage(pageNumber),
         "pageSize": contentOnThePage(pageSize),
-        "totalCount": tc,
+        "totalCount": totalCount(content),
         "items": content.slice(giveSkipNumber(pageNumber, pageSize), giveSkipNumber(pageNumber, pageSize) + contentOnThePage(pageSize))
     }
 
