@@ -8,7 +8,7 @@ export const paginationContentPage = (sortBy: string | undefined,
                                       pageSize: string | null | undefined,
                                       items: blogsType | postsType) => {
     const pageWithContent = {
-        "pagesCount": pagesCount(pageSize, items),
+        "pagesCount": pagesCount(pageSize),
         "page": currentPage(pageNumber),
         "pageSize": contentOnThePage(pageSize),
         "totalCount": totalCount(),
