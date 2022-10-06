@@ -16,7 +16,7 @@ export const giveSkipNumber = (pageNumber: string | null | undefined,
 }
 
 export const totalCount = (content: postsType | blogsType) => {
-    return content.length + 1
+    return content.length
 }
 
 export const currentPage = (pageNumber: string | null | undefined) => {
